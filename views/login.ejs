@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+    <h2 class="mb-4 text-center text-primary fw-bold">Login</h2>
+    
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form-control" 
+          placeholder="Enter your email" 
+          required 
+          autofocus
+        >
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          class="form-control" 
+          placeholder="Enter your password" 
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 fw-bold">
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

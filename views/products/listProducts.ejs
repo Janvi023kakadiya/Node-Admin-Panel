@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Products</h2>
+    <a href="/product/add" class="btn btn-success">+ Add New Product</a>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Category</th>
+              <th scope="col" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (products.length === 0) { %>
+              <tr>
+                <td colspan="5" class="text-center text-muted py-4">No products found.</td>
+              </tr>
+            <% } else { %>
+              <% products.forEach(product => { %>
+                <tr>
+                  <td>
+                    <img src="/uploads/<%= product.image %>" alt="Product" class="rounded" width="60" height="60" style="object-fit: cover;">
+                  </td>
+                  <td><%= product.name %></td>
+                  <td>$<%= product.price.toFixed(2) %></td>
+                  <td><%= product.category %></td>
+                  <td class="text-center">
+                    <a href="/product/edit/<%= product._id %>" class="btn btn-sm btn-outline-warning me-1">Edit</a>
+                    <a href="/product/delete/<%= product._id %>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
